@@ -30,8 +30,9 @@ int main(int argc, char** argv) {
   gettimeofday(&end, NULL);
   for (auto& rect : faces) {
     std::cout << rect.x << ", " << rect.y << "," << rect.width << "," << rect.height << std::endl;
+    cv::rectangle(image, rect, cv::Scalar(255,0,0));
   }
-  std::cout << std::endl;
+  cv::imwrite("output.jpg", image);
   std::cout << "Elapsed Time: " << (end.tv_sec - start.tv_sec)*1000 + (end.tv_usec - start.tv_usec) / 1000 << " ms" << std::endl;
   return 0;
 }
